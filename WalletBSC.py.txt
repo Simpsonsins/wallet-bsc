@@ -1,0 +1,14 @@
+from web3 import Web3
+
+# Установите провайдер BSC (например, Infura или BSC Mainnet)
+web3 = Web3(Web3.HTTPProvider('https://bsc-dataseed1.binance.org:443'))
+
+# Адрес кошелька, для которого вы хотите проверить баланс
+wallet_address = '0xYourWalletAddress'
+
+def get_bsc_balance(address):
+    balance = web3.eth.get_balance(address)
+    return web3.fromWei(balance, 'ether')  # Конвертируем баланс из wei в BNB
+
+balance = get_bsc_balance(wallet_address)
+print(f'Баланс кошелька {wallet_address}: {balance} BNB')
